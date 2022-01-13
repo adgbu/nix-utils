@@ -8,3 +8,13 @@ Then there is a 3rd category which sits between the first two. Stuff you do repe
 
 That is what the rpi-utils repo is for. Quick access to routines for common tasks.
 
+## Content
+
+### Instructions
+Instructions should be short and to the point. They are meant to help you complete a task quickly. They should contain only the most useful information and assume you have some prior knowledge. Instructions are not meant to be beginner tutorials. Instructions are not meant to be complete documentation either. Both of these can be found on the Internet.
+
+Instructions are written in plain text in Markdown format. They should be easy to read in any situation, including in a terminal. Command examples are written as code to make them stand out from the paragraphs.
+
+### Scripts
+Scripts are a great way to automate tasks that are tedious to do manually. Scripts must work. They are super annoying when they don't work properly. In that case a good instruction is better than a buggy script. A working script with well written comments can also serve as an instruction.
+
