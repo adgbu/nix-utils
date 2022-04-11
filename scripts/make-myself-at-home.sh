@@ -5,7 +5,7 @@
 # Make yourself at home!
 
 
-if [ $# == 2 ]; then
+if [ $# -eq 2 ]; then
 	# Configure git with personal info.
 	NAME="$1 ($(whoami)@$(hostname))"
 	EMAIL="$2"
@@ -26,4 +26,4 @@ echo "Creating ~/.local/bin to put local executables in..."
 mkdir -p "$HOME/.local/bin"
 
 # Install lazygit
-sh ~/rpi-utils/lazygit-setup.sh
+sh lazygit-setup.sh
