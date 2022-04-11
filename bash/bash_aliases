@@ -1,0 +1,73 @@
+######################################################################
+# Command aliases to make life easier.
+alias ..='cd ..'
+alias rm='rm -i'
+alias lf='ls -wFG'
+alias ll='ls -lohFG'
+alias la='ls -lAF'
+#alias lt='ls -lAF --time-style=full-iso'
+alias lt='ls -troh'
+
+# Use apt-install helper script to keep install history. See log in apt-install.log
+alias install='~/rpi-utils/apt-install.sh'
+#dep. Old way to try and show install history.
+#dep. alias apt-history="cat /var/log/apt/history.log | egrep '^(Start-Date:|Commandline:)' | grep -v aptdaemon | egrep '^Commandline:' | sed s/'Commandline: '/''/"
+
+# Get date and time in a custom format.
+alias now='date +%Y-%m-%d\ %H:%M:%S.%N'
+
+# Get my public ip address. Requires wget or curl.
+alias myip='curl https://ifconfig.me/ip; echo'
+#alias myip='wget -qO- https://ifconfig.me/ip'
+#alias myip=’wget -qO- https://icanhazip.com/'
+
+# Mount a folder from a remote system via SSH using FUSE. Requires sshfs.
+alias sshmount='sshfs username@hostname:/path/to/folder ~/local/folder -o idmap=user' 
+
+# List available WiFi networks. Requires Python 2.7 and python scripts iw_parse_gbu + iw_parse_gbu.py (e.g. in /usr/local/bin)
+alias lswifi='sudo iwlist wlan0 scan | iw_parse_gbu'
+
+# SVN helpers.
+alias svnmod='svn st | grep -v ^?'
+alias svnchg='svn log -l 1 && svn diff -r PREV:HEAD --summarize'
+
+# Docker helpers
+alias docker-rm-exited='docker rm $(docker ps -a -q -f status=exited)'
+
+# SoftEther VPN helpers
+alias vpnup='sudo ifconfig vpn_softeth up && sudo dhclient -v vpn_softeth'
+alias vpnping='ping 192.168.30.1 -c 1 -s 1472 -W 3'
+
+# Check Python environment.
+alias pychk='which python && python -V ; which python3 && python3 -V ; pip -V'
+
+# Test the speed of flash memory with agnotics utility
+alias sdtest='sh /usr/share/agnostics/sdtest.sh'
+
+######################################################################
+# Create a function if you need parameters. Alias takes no parameters.
+
+# Search for file name pattern. Usage: search <root folder> <part of file name>
+search() { find "$1" -name "*$2*" -type f,d -print 2>/dev/null ; }
+
+# Create a new folder and change dir to it in one go.
+mkcd() { mkdir -p "$1" && cd "$1" ; }
+
+# Read system temperature on Raspberry Pi
+systemp() { vcgencmd measure_temp | egrep -o "[0-9]*\.[0-9]*" ; }
+watchtemp() { watch -n "$1" 'vcgencmd measure_temp | egrep -o "[0-9]*\.[0-9]*"' ; }
+
+# Run chmod recursively on everything except directories (e.g. $ chmodr 644)
+chmodr() { find . ! -type d -print0 | xargs -0 chmod $1 ; }
+
+######################################################################
+# macOS specific command aliases and helpers.
+
+# List all members of a group (macOS) - https://superuser.com/questions/279891/list-all-members-of-a-group-mac-os-x
+members () { dscl . -list /Users | while read user; do printf "$user "; dsmemberutil checkmembership -U "$user" -G "$*"; done | grep "is a member" | cut -d " " -f 1; };
+
+# Fing requires root on macOS. Incl parameters for nice output. (Requires fing)
+finga() { sudo fing -r 1 -o table,text,console $@ ; }
+
+# COLMAP as prebuilt binary unzipped (.app)
+alias colmap='~/Applications/COLMAP.app/Contents/MacOS/colmap'

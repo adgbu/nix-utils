@@ -1,0 +1,97 @@
+# Source this file to set the bash prompt.
+
+#TODO: Determine if terminal emulator supports color.
+#TODO: Make this work for both macOS and Linux.
+#if [ "$color_prompt" = yes ]; then
+#    PS1='COLOR \h:\W \u\$'
+#else
+#    PS1='MONO \h:\W \u\$'
+#fi
+
+# Function that prints current time aligned to the right of terminal.
+gb__right_aligned_time()
+{
+    printf "%*s" $COLUMNS "${PYENV_VERSION} $(date +%H:%M:%S)"
+}
+
+# Use a function to keep variables in a local scope.
+# This functions does not need to remain defined.
+gb__generate_ps1()
+{
+    # Set some properties depending on OS/System.
+    local HOSTSTYLE='\[\033[01;32m\]'
+    case "$(uname -s)" in
+      'Darwin') HOSTSTYLE='\[\033[01;36m\]' ;;
+      'Linux') HOSTSTYLE='\[\033[01;35m\]' ;;
+      # *) a=$d ;;
+    esac
+
+    # Define some formats to use.
+    local NON='\[\033[00m\]'
+    local BLU='\[\033[01;34m\]'
+    local RED='\[\033[00;31m\]'
+    local DIM='\[\033[02;37m\]'
+
+    # Parse the exit status and show when non zero.
+    local EXIT_STATUS=""
+    if [ $? != 0 ]; then
+        EXIT_STATUS="${RED}$? "
+    fi
+
+    # Show some extra info aligned to the right in the terminal.
+    # The function is not called now, but at every prompt. Function must remain defined.
+    # Escape all of it to not count chars. Save cursor. Print. Restore cursor.
+    #local RIGHT_PROMPT="\[\0337${DIM}\$(gb__right_aligned_time)\0338\]"
+
+    # The main information with user, host, path, etc.
+    local LEFT_PROMPT="${HOSTSTYLE}\u@\h${NON}:${BLU}\w ${PYENV_VERSION}"
+
+    # Generate the final string that will go into PS1 variable.
+    #printf "\[\0337${EXTRA_PROMPT}\0338\]${EXIT_STATUS}${MAIN_PROMPT}${NON}\n\$ "
+    printf "${RIGHT_PROMPT}${EXIT_STATUS}${LEFT_PROMPT}${NON}\n\$ "
+}
+
+# Run the generator and save to PS1 variable.
+PS1="$(gb__generate_ps1)"
+# Unload the generator function.
+unset -f gb__generate_ps1
+
+#############################################
+## Documentation 
+
+# Example how to right align content in prompt using printf.
+# Escape. Save cursor position. Output stuff (still escaped to not count chars). Restore cursor. Unescape.
+# \[\0337\$(printf "%*s" $COLUMNS \$(date +%H:%M:%S))\0338\]
+
+# Tag with COLOR or ATTR and COLOR.
+#\[\033[COLORm\]
+#\[\033[ATTR;COLORm\]
+
+## Text colors:
+# 3x = Foreground colors.
+# 4x = Background colors.
+#
+#  0 = Black
+#  1 = Red
+#  2 = Green
+#  3 = Yellow
+#  4 = Blue
+#  5 = Purple
+#  6 = Cyan
+#  7 = White
+
+## Text attributes
+# 0 = Normal (default)
+# 1 = Bold or light (depends on the terminal emulator).
+# 2 = Dim
+# 3 = ?
+# 4 = Underlined
+# 5 = Blinking (mostly not supported)
+# 6 = ?
+# 7 = Reversed (swap the foreground and background)
+# 8 = Hidden
+
+## Command exec
+# $(command) will be evaluated when the .bashrc is sourced.
+# \$(command) will be evaluated everytime the prompt is displayed.
+# Also the string must be in "" for this to work.

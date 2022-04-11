@@ -1,0 +1,14 @@
+# Load bash aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Custom bash prompt
+if [ -f ~/.bash_prompt ]; then
+    . ~/.bash_prompt
+fi
+
+# pyenv 
+# Load pyenv into shell. First part is in .bash_profile or .profile.
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
