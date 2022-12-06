@@ -8,7 +8,7 @@ if [ -n "$(which lazygit)" ]; then
 	exit
 fi
 
-VERSION="0.34"
+VERSION="0.36.0"
 OS="Linux"
 
 case $(uname -m) in
