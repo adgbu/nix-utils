@@ -9,7 +9,7 @@ alias la='ls -lAF'
 alias lt='ls -troh'
 
 # Use apt-install helper script to keep install history. See log in apt-install.log
-alias install='~/rpi-utils/apt-install.sh'
+alias install='~/rpi-utils/scripts/apt-install.sh'
 #dep. Old way to try and show install history.
 #dep. alias apt-history="cat /var/log/apt/history.log | egrep '^(Start-Date:|Commandline:)' | grep -v aptdaemon | egrep '^Commandline:' | sed s/'Commandline: '/''/"
 
