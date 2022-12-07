@@ -1,14 +1,17 @@
-# Load bash aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+####################################################################
+# My custom appendix to the .bashrc file.
 
-# Custom bash prompt
-if [ -f ~/.bash_prompt ]; then
-    . ~/.bash_prompt
-fi
+# Load bash aliases (May already exist.)
+#if [ -f ~/.bash_aliases ]; then
+#    . ~/.bash_aliases
+#fi
 
-# pyenv 
+# Custom bash prompt (May already exist.)
+#if [ -f ~/.bash_prompt ]; then
+#    . ~/.bash_prompt
+#fi
+
+# pyenv
 # Load pyenv into shell. First part is in .bash_profile or .profile.
 #eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
