@@ -36,10 +36,12 @@ URL="https://github.com/jesseduffield/lazygit/releases/download/v${VERSION}/lazy
 
 echo "Downloading ${URL}..."
 mkdir -p /tmp/lazygit
-cd /tmp/lazygit
+pushd /tmp/lazygit
 wget -q -O- ${URL} | tar xfz -
 #curl -L ${URL} | tar xfz -
 
 echo "Install lazygit into ~/.local/bin..."
 mkdir -p "$HOME/.local/bin"
 /bin/cp -r lazygit "$HOME/.local/bin"
+popd
+rm -fr /tmp/lazygit
