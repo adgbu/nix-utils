@@ -11,7 +11,7 @@ if [[ -z "$1" ]]; then
 	echo "${USAGE}"
 	exit 1
 fi
-IMAGE="$2"
+IMAGE="$1"
 
 if [[ -z "$2" ]]; then
 	echo "The 2nd parameter must be the size (e.g. "6G")."
