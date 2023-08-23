@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Helper script to download and install lazygit for the right ARCH.
 # https://github.com/jesseduffield/lazygit/releases/latest
 
