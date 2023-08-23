@@ -29,3 +29,4 @@ Windows Settings > Network & Internet > VPN > "Change adapter options"
   + Uncheck "Use default gateway on remote network".
   + Click OK, OK.
 - Select "Internet Protocol Version 6 (TCP/IPv6), click the Properties button and repeat the same 4 steps.
+- Click OK
