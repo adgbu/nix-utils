@@ -4,7 +4,7 @@
 # It will setup some things that I like to have on all systems.
 # Make yourself at home!
 
-BASE=$HOME/rpi-utils
+BASE=$HOME/nix-utils
 
 if [ $# -eq 2 ]; then
 	# Configure git with personal info.
