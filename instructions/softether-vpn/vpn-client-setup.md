@@ -95,7 +95,7 @@ Then check ifconfig again and you should have an IPv4 address.
 
 We will setup two systemd services to start a vpn client and dhcp client.
 The unit files are already written and stored in this directory as 
-'softeth-vpnclient.service' and 'softeth-dhclient.service'.
+```softeth-vpnclient.service``` and ```softeth-dhclient.service```.
 
 The proper target directory for the unit files is '/etc/systemd/system'.
 Let systemd know that you have made changes to unit files.
