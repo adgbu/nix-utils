@@ -1,0 +1,12 @@
+[Unit]
+Description=SoftEther VPN Client
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/vpnclient/vpnclient start
+ExecStop=/usr/vpnclient/vpnclient stop
+
+[Install]
+WantedBy=multi-user.target
