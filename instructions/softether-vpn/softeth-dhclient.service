@@ -1,0 +1,15 @@
+[Unit]
+Description=DHCP Client for SoftEther VPN
+After=softeth-vpnclient.service
+Requires=softeth-vpnclient.service
+PartOf=softeth-vpnclient.service
+
+[Service]
+Type=forking
+ExecStart=/sbin/dhclient -v vpn_softeth
+ExecStop=/sbin/dhclient -v -r vpn_softeth
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
