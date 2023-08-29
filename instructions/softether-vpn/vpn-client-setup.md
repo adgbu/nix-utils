@@ -58,8 +58,7 @@ Every check should say: Pass.
 
 VPN Client> RemoteEnable
 VPN Client> NicCreate softeth
-VPN Client> AccountCreate 
-Name of VPN Connection: VpnName
+VPN Client> AccountCreate VpnName
 Destination VPN Server: VpnName.softether.net:443
 Destination Virtual Hub: VirtualHubName
 Connecting User Name: Username
@@ -69,8 +68,7 @@ VPN Client> AccountPasswordSet VpnName
 Password: ****
 Confirm: ****
 Specify standard or radius: standard
-VPN Client> AccountStartupSet
-Name of VPN Connection: VpnName
+VPN Client> AccountStartupSet VpnName
 VPN Client> AccountConnect VpnName
 VPN Client> AccountList
 ...
