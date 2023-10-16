@@ -16,7 +16,7 @@ if [ $# -eq 2 ]; then
 fi
 
 echo "Hooking you up with some sweet command aliases..."
-ln -sf "$BASE/bash/bash_aliases" "$HOME/.bash_aliases"
+ln -sf "$BASE/bash/aliases" "$HOME/.bash_aliases"
 
 echo "Hooking you up with a custom bash prompt..."
 ln -sf "$BASE/bash/bash_prompt" "$HOME/.bash_prompt"
@@ -28,6 +28,3 @@ cat "$BASE/bash/bashrc" >> "$HOME/.bashrc"
 # ~/.local/bin will be in PATH automatically iff it exists.
 echo "Creating ~/.local/bin to put local executables in..."
 mkdir -p "$HOME/.local/bin"
-
-# Install lazygit
-sh lazygit-setup.sh
