@@ -11,7 +11,8 @@
 
 # Check that exactly two arguments are provided.
 if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 <source_folder_with_slash/> <target_folder_with_slash/>"
+  echo "Usage:"
+  echo "$0 <source_folder_with_slash/> <target_folder_with_slash/>"
   exit 1
 fi
 
