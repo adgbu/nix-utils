@@ -51,6 +51,15 @@ mkcd() { mkdir -p "$1" && cd "$1" ; }
 # Run chmod recursively on everything except directories (e.g. $ chmodr 644)
 chmodr() { find . ! -type d -print0 | xargs -0 chmod $1 ; }
 
+# Move using rsync and checksum verification.
+#rmove() { rsync -ah --progress --checksum --remove-source-files $1 $2 }
+
+# Directory copy macro using rsync.
+#copyr() { rsync -Wavh --progress $1 $2 }
+
+# Directory compare macro using rsync.
+#compr() { rsync -nvcrt --delete --exclude='._*' --exclude='.DS_Store' $1 $2 }
+
 ######################################################################
 # raspberry pi and debian linux specific command aliases and helpers.
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -82,7 +91,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	finga() { sudo fing -r 1 -o table,text,console $@ ; }
 
 # COLMAP as prebuilt binary unzipped (.app)
-	alias colmap='~/Applications/COLMAP.app/Contents/MacOS/colmap'
+#	alias colmap='~/Applications/COLMAP.app/Contents/MacOS/colmap'
 
 # On macOS 'brew install coreutils' to get some GNU versions of tools.
 # List files with ISO datetime sorted by modify date, newest first.
